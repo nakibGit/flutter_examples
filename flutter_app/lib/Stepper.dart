@@ -7,7 +7,7 @@ class NumberStepper extends StatelessWidget {
   final Color stepCompleteColor;
   final Color currentStepColor;
   final Color inactiveColor;
-  final double lineWidth = 3.5;
+  final double lineWidth;
   NumberStepper({
     Key key,
     @required this.width,
@@ -15,7 +15,8 @@ class NumberStepper extends StatelessWidget {
     @required this.stepCompleteColor,
     @required this.totalSteps,
     @required this.inactiveColor,
-    this.currentStepColor,
+    @required this.currentStepColor,
+    @required this.lineWidth,
   })  : assert(curStep > 0 == true && curStep <= totalSteps + 1),
         super(key: key);
 
@@ -28,15 +29,8 @@ class NumberStepper extends StatelessWidget {
         right: 24.0,
       ),
       width: this.width,
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: _steps(),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-        ],
+      child: Row(
+        children: _steps(),
       ),
     );
   }
@@ -79,6 +73,7 @@ class NumberStepper extends StatelessWidget {
       var borderColor = getBorderColor(i);
       var lineColor = getLineColor(i);
 
+      // step circles
       list.add(
         Container(
           width: 28.0,
@@ -95,7 +90,7 @@ class NumberStepper extends StatelessWidget {
         ),
       );
 
-      //line between icons
+      //line between step circles
       if (i != totalSteps - 1) {
         list.add(
           Expanded(

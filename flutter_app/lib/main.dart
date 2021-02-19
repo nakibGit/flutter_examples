@@ -51,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (currentStep > stepLength) {
       setState(() => complete = true);
     }
-    //print(currentStep);
   }
 
   @override
@@ -70,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             stepCompleteColor: Colors.blue,
             currentStepColor: Color(0xffdbecff),
             inactiveColor: Color(0xffbababa),
+            lineWidth: 3.5,
           ),
           SizedBox(
             height: 30,
